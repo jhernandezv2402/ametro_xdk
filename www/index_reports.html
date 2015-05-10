@@ -1,0 +1,170 @@
+<html>
+
+<head>
+	<title>Left Side Menu App template</title>
+	<!--
+    This template can be used for simple app with left side menu that can be opened to switch views, for applications like Youtube App or Gmail app.
+-->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+	<link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
+	<link rel="stylesheet" type="text/css" href="appframework/icons.css" />
+	<link rel="stylesheet" type="text/css" href="appframework/estilos.css" />
+	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
+	<!--AppFramework plugin for sliding side menu-->
+	<script type="text/javascript" charset="utf-8" src="appframework/plugins/af.slidemenu.js"></script>
+
+	<!-- phantom library, needed for XDK "legacy" container api calls -->
+	<script src="intelxdk.js"></script>
+	<!-- phantom library, needed for Cordova api calls -->
+	<script src="cordova.js"></script>
+	<!-- phantom library, needed for XDK "legacy" container CORS -->
+	<script src="xhr.js"></script>
+	<!--Funciones de index-->
+	<script src="appframework/index.js"></script>
+    <script src="appframework/login.js"></script>
+
+	<script>
+		var onDeviceReady = function() { // called when Cordova is ready
+			if (window.Cordova && navigator.splashscreen) { // Cordova API detected
+				$.ui.launch();
+				navigator.splashscreen.hide(); // hide splash screen
+			}
+		};
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+
+		$.ui.autoLaunch = false;
+		$.ui.animateHeaders = false;
+
+		$(document).ready(function() {
+			$.ui.setSideMenuWidth('260px');
+			$.ui.launch();
+		});
+	</script>
+</head>
+
+<body>
+    <nav>
+        <ul class="list">
+            <li><a href="#page1" class="icon tag big">Nuevo reporte</a>
+            </li>
+            <li><a href="#page2" id="view-reports" class="icon database big">Reportes de otros usuarios</a>
+            </li>
+            <li><a href="#page3" id="view-myreports" class="icon user big">Mis reportes</a>
+            </li>
+            <li><a href="#page4" class="icon bug big">Acerca de...</a>
+            </li>
+            <li><a href="#page5" class="icon bug big">Cerrar sesión</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="content" style="">
+
+        <!--Main View Pages-->
+        <div class="panel" title="Home" id="page1" data-footer="none" selected="true">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Nuevo reporte</h1>
+            </header>
+            <h2 id="main-title">AMETRO</h2>
+
+            <div class="lol" id="mydiv">
+
+                <label id="text" for="lineas">Línea</label>
+                <select id="lineas" name="lineas">
+                    <option disabled selected> Selecciona linea</option>
+                    <option value="1">Linea 1</option>
+                    <option value="2">Linea 2</option>
+                    <option value="3">Linea 3</option>
+                    <option value="4">Linea 4</option>
+                    <option value="5">Linea 5</option>
+                    <option value="6">Linea 6</option>
+                    <option value="7">Linea 7</option>
+                    <option value="8">Linea 8</option>
+                    <option value="9">Linea 9</option>
+                    <option value="A">Linea A</option>
+                    <option value="B">Linea B</option>
+                    <option value="12">Linea 12</option>
+                </select>
+                <br>
+                <label id="text" for="estaciones">Estación</label>
+                <select id="estaciones" name="estaciones" disabled>
+
+                </select>
+
+                <br>
+                <br>
+                <button align="center" id="enviar-reporte">Enviar reporte</button>
+
+            </div>
+
+        </div>
+
+        <div class="panel" title="Favorites" id="page2" data-footer="none">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Reportes de otros usuarios</h1>
+                <br>
+
+            </header>
+
+            <div id="reports"><span class="ui-icon ui-icon-loading spin"></span></div>
+            <button id="button-reportes">Actualizar</button>
+
+        </div>
+
+        <div class="panel" title="Messages" id="page3" data-footer="none">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Mis reportes</h1>
+            </header>
+
+            <div id="mreports"><span class="ui-icon ui-icon-loading spin"></span></div>
+            <!--<button id="button-misreportes">Ver reportes</button>-->
+
+        </div>
+
+        <div class="panel" title="Profile" id="page4" data-footer="none">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Profile</h1>
+            </header>
+            <img src="appframework/logo.jpg" alt="AMetro" class="logo" />
+            <div class="lol">
+                <h1 class="varela">AMETRO</h1>
+                <br />
+                <p class="varela">La gran mayoría de las personas de
+                    la ciudad de México usan el sistema
+                    de trasporte colectivo METRO para
+                    llegar a su trabajo, escuela o a su
+                    casa con lo cual se congestiona las
+                    estaciones al no saber a qué hora
+                    llega el metro y así anticipar su
+                    salida de los usuarios y más aún al
+                    no saber en qué vagón hay lugar
+                    disponible para abordar y en cual ya
+                    no hay espacio, también en que
+                    estación se necesita un metro vacío
+                    para dar solución al sobrecupo de
+                    estación. .
+                </p>
+            </div>
+        </div>
+
+         <div class="panel" title="Cerrar sesión" id="page5" data-footer="none">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Cerrar sesión</h1>
+            </header>
+            <a id = "cerrarSesion" class="button block green" >Cerrar</a>
+            
+        </div>
+
+    </div>
+</body>
+
+</html>

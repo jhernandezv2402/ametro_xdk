@@ -1,0 +1,121 @@
+<html>
+
+    <head>
+        <title>Left Side Menu App template</title>
+        <!--
+        This template can be used for simple app with left side menu that can be opened to switch views, for applications like Youtube App or Gmail app.
+    -->
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+        <link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
+        <link rel="stylesheet" type="text/css" href="appframework/icons.css" />
+        <link rel="stylesheet" type="text/css" href="appframework/estilos.css" />
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
+        <!--AppFramework plugin for sliding side menu-->
+        <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.slidemenu.js"></script>
+
+        <!-- phantom library, needed for XDK "legacy" container api calls -->
+        <script src="intelxdk.js"></script>
+        <!-- phantom library, needed for Cordova api calls -->
+        <script src="cordova.js"></script>
+        <!-- phantom library, needed for XDK "legacy" container CORS -->
+        <script src="xhr.js"></script>
+        <!--Funciones de index-->
+        <script src="appframework/login.js"></script>
+
+        <script>
+            var onDeviceReady = function() { // called when Cordova is ready
+                if (window.Cordova && navigator.splashscreen) { // Cordova API detected
+                    $.ui.launch();
+                    navigator.splashscreen.hide(); // hide splash screen
+                }
+            };
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+
+            $.ui.autoLaunch = false;
+            $.ui.animateHeaders = false;
+
+            $(document).ready(function() {
+                $.ui.setSideMenuWidth('260px');
+                $.ui.launch();
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="afui">
+        <script>
+            if(getCookie('user')){window.location.href = "index_reports.html";}
+            console.log(getCookie('user'))
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0; i<ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+                }
+                return "";
+            }
+        </script>
+    
+            <div id="content" style=""> 
+                
+            <!-- Views -->
+                
+                <!-- Welcome View -->
+                <div class="panel" title="Welcome" id="page1" data-header="none" data-footer="none" selected="true">
+                    <div style="text-align:center">
+                    <br>
+                    <br>
+                    <h1>Ametro</h1>
+                    <br>
+                    <br>
+                    <h3>Bienvenido al único sistema de alertas para contingencias en el metro reportadas por los usarios.</h3>
+                    <br>
+                    <br>
+                    </div>    
+                    <ul id="inicio" class="list inset">
+                        <li><a href="#signin" class="icon user" style="text-align:center">Iniciar sesión</a></li>
+                        <li><a href="#signup" class="icon pencil" style="text-align:center">Registrarse</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Login View -->
+                <div class="panel" title="Login" id="signin" data-footer="none">
+                    <div style="text-align:center">
+                    <br>
+                    <br>
+                    <h4>Iniciar sesión</h4>
+                    <br>
+                    <br>
+                    </div>
+                    <input id="email" name="email" type="email" placeholder="correo electrónico"/>
+                    <input id="password" name="password" type="password" placeholder="password" />
+                    <a class="button block green" id="login">Ingresar</a>
+                </div>
+                
+                <!-- Register View -->
+                <div class="panel" title="Registro" id="signup" data-footer="none">
+                    <div style="text-align:center">
+                    <br>
+                    <br>
+                    <p>Igresa tu datos, toma menos de 30 segundos</p>
+                    <br>
+                    <br>
+                    </div>
+                    <input id = "nombre" name="name" type="text" placeholder="Nombre y apellidos" />
+                    <input id = "email_login" name="email" type="email" placeholder="Correo electrónico" />
+                    <input id = "password_login" name="password" type="password" placeholder="password" />
+                    <input id = "passok" name="password2" type="password" placeholder="confirma tú password" />
+                    <a id = "registrar" class="button block green" >Registrarse</a>
+                </div>                
+            </div>
+
+        </div>
+    </body>
+
+</html>
