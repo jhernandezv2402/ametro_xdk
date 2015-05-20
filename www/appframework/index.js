@@ -1,5 +1,5 @@
 $(window).on('load', function(){
-    var dir = "http://192.168.1.74:1337"
+    var dir = "http://ametro.herokuapp.com"
     $('#enviar-reporte').on('click', function(){send()})
     $('#button-misreportes, #view-myreports').on('click', function(){m_reports()})
     $('#button-reportes, #view-reports').on('click', function(){reports()})

@@ -1,5 +1,5 @@
 $(window).on('load', function(){
-    var dir = "http://192.168.1.74:1337"
+    var dir = "http://ametro.herokuapp.com"
     $('#registrar').on('click', function(){send()})
     $('#login').on('click', function(){login()})
 
